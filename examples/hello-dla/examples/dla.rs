@@ -7,7 +7,7 @@ use riscv_rt::entry;
 
 #[entry]
 fn main() -> ! {
-    uart_write("Hello world!");
+    uart_write("Hello world!\r\n");
     dla_write("Hello DLA");
     let mut buf: [u8; 9] = [0; 9];
     dla_read(&mut buf, 9, 0);
