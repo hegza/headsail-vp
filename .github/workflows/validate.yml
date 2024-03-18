@@ -14,21 +14,6 @@ env:
   RENODE_CI_MODE: YES
 
 jobs:
-  renode-runs-ok:
-    runs-on: ubuntu-latest
-    container:
-      image: antmicro/renode:1.14.0
-      options: --user root
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Run robot
-      run: renode-test scripts/robot/hello_dla.robot
-    - name: Upload snapshots
-      uses: actions/upload-artifact@v4
-      with:
-        path: output/tests/snapshots
-
   build-dla-example:
 
     runs-on: ubuntu-latest
@@ -69,3 +54,18 @@ jobs:
       run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "$RENODE_PATH/scripts/pydev/DLA.py"
     - name: Run example
       run: renode --console -e "set bin @$BIN; include @$BASEDIR/scripts/start_hpc.resc"
+
+  renode-runs-ok:
+    runs-on: ubuntu-latest
+    container:
+      image: antmicro/renode:1.14.0
+      options: --user root
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run robot
+      run: renode-test scripts/robot/hello_dla.robot
+    - name: Upload snapshots
+      uses: actions/upload-artifact@v4
+      with:
+        path: output/tests/snapshots
