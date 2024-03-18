@@ -26,10 +26,13 @@ jobs:
       with:
         name: dla-debug
         path: ./examples/hello-dla/target/riscv64imac-unknown-none-elf/debug/examples/dla
+        if-no-files-found: error
         retention-days: 14
   
   run-dla-example:
   
+    needs: build-dla-example
+    
     runs-on: ubuntu-latest
     container: antmicro/renode:1.14.0
     
@@ -38,6 +41,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: dla-debug
+        path: dla
     - name: Run example
       working-directory: ./examples/hello-dla
       run: ./renode.sh dla
