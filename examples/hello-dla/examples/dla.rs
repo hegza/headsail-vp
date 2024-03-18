@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-use hello_hpc::{uart_write, dla_write, dla_read};
+use hello_hpc::{dla_read, dla_write, uart_write};
 use panic_halt as _;
 use riscv_rt::entry;
 
