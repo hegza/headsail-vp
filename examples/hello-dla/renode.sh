@@ -4,7 +4,14 @@ set -x # echo on
 BASEDIR=$(dirname "$0")
 BIN=${BIN=$1}
 RENODE_PATH=$(dirname $(which renode))
-RENODE_PYTHON_PERIPHERALS="$RENODE_PATH/scripts/pydev"
+if [ -z ${CI+x} ];
+then
+   echo "CI is unset";
+   RENODE_PYTHON_PERIPHERALS="$RENODE_PATH/scripts/pydev";
+else
+   echo "CI is set";
+   RENODE_PYTHON_PERIPHERALS="/opt/renode/scripts/pydev";
+fi
 VP_PYTHON_PERIPHERALS="$BASEDIR/../../vp/devel/python_peripherals"
 
 # Check if symlinks exist
