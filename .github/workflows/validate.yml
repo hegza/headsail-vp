@@ -25,7 +25,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: dla-debug
-        path: target/riscv64imac-unknown-none-elf/debug/examples/dla
+        path: ./examples/hello-dla/target/riscv64imac-unknown-none-elf/debug/examples/dla
         retention-days: 14
   
   run-dla-example:
