@@ -45,7 +45,7 @@ jobs:
       BIN: dla
 
     steps:
-    - uses: actions/checkout@v3.0.2
+    - uses: actions/checkout@v4
     - name: Download artifact
       uses: actions/download-artifact@v4
       with:
