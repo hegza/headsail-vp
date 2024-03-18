@@ -44,7 +44,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: dla-debug
-        path: ./examples/hello-dla/dla
+        path: ./examples/hello-dla/
     - name: Create Renode peripheral symlinks
       run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "$RENODE_PATH/scripts/pydev/DLA.py"
     - name: Run example
