@@ -41,8 +41,8 @@ jobs:
       image: antmicro/renode:1.14.0
       options: --user root
 
-      env:
-        BIN: dla
+    env:
+      BIN: dla
 
     steps:
     - uses: actions/checkout@v4
