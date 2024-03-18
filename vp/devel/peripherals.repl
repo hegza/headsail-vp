@@ -7,7 +7,7 @@ apb_uart_1: UART.NS16550 @ sysbus 0xFFF01000
 dla: Python.PythonPeripheral @ sysbus 0xFF700000
     size: 0x0068
     initable: true
-    filename: "python_peripherals/DLA.py"
+    filename: "scripts/pydev/DLA.py"
 
 apb_spi_master_0: SPI.STM32SPI @ sysbus 0xFFF02000
 
