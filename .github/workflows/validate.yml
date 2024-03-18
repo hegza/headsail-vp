@@ -8,6 +8,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  RENODE_PATH: /opt/renode/
 
 jobs:
   build-dla-example:
@@ -44,7 +45,7 @@ jobs:
         name: dla-debug
         path: ./examples/hello-dla/dla
     - name: Create Renode peripheral symlinks
-      run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "/opt/renode/scripts/pydev/DLA.py"
+      run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "$RENODE_PATH/scripts/pydev/DLA.py"
     - name: Run example
       working-directory: ./examples/hello-dla
       run: ./renode.sh dla
