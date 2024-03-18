@@ -52,7 +52,7 @@ jobs:
         name: dla-debug
     - name: Create Renode peripheral symlinks
       run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "$RENODE_PATH/scripts/pydev/DLA.py"
-    - name: Run robot
+    - name: Run example
       run: renode-test scripts/robot/hello_dla.robot --variable BIN:"$BIN"
     - name: Upload snapshots
       if: failure()
