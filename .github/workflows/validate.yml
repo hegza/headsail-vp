@@ -35,10 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: antmicro/renode:1.14.0
-      ports:
-      - 80
-      volumes:
-      - my_docker_volume:/volume_mount
       options: --user root
     steps:
     - uses: actions/checkout@v3.0.2
