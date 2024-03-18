@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run robot
-      run: renode-test scripts/robot/help.robot
+      run: renode-test scripts/robot/hello_dla.robot
     - name: Upload snapshots
       uses: actions/upload-artifact@v4
       with:
