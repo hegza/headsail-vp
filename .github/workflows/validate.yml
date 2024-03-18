@@ -20,4 +20,25 @@ jobs:
       run: rustup target add riscv64imac-unknown-none-elf
     - name: Build examples
       working-directory: ./examples/hello-dla
-      run: cargo build --examples
+      run: cargo build --example dla
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: dla-debug
+        path: target/riscv64imac-unknown-none-elf/debug/examples/dla
+        retention-days: 14
+  
+  run-dla-example:
+  
+    runs-on: ubuntu-latest
+    container: antmicro/renode:1.14.0
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dla-debug
+    - name: Run example
+      working-directory: ./examples/hello-dla
+      run: ./renode.sh dla
