@@ -15,4 +15,4 @@ if [ ! -h "$RENODE_PYTHON_PERIPHERALS/DLA.py" ]; then
    ln -s $(readlink -f "$VP_PYTHON_PERIPHERALS/DLA.py") "$RENODE_PYTHON_PERIPHERALS/DLA.py"
 fi
 
-renode --console -e "set bin @$BIN; include @$BASEDIR/../../scripts/start_hpc.resc"
+renode --console -e "set bin @$BIN; include @$BASEDIR/../../scripts/2_run_hpc.resc"
