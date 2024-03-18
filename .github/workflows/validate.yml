@@ -56,13 +56,24 @@ jobs:
       run: renode --console -e "set bin @$BIN; include @$BASEDIR/scripts/start_hpc.resc"
 
   renode-runs-ok:
+    needs: build-dla-example
+
     runs-on: ubuntu-latest
     container:
       image: antmicro/renode:1.14.0
       options: --user root
 
+      env:
+        BIN: dla
+
     steps:
     - uses: actions/checkout@v4
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dla-debug
+    - name: Create Renode peripheral symlinks
+      run: ln -s $(readlink -f "./vp/devel/python_peripherals/DLA.py") "$RENODE_PATH/scripts/pydev/DLA.py"
     - name: Run robot
       run: renode-test scripts/robot/hello_dla.robot
     - name: Upload snapshots
